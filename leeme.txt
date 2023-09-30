@@ -1,7 +1,7 @@
-echo "# PySexto2023" >> README.md
+echo "# PyCaja" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/WalterCoayla/PySexto2023.git
+git remote add origin https://github.com/eileenjm/PyCaja.git
 git push -u origin main
