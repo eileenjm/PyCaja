@@ -5,10 +5,12 @@ require_once './modelo/Pagos.php';
 require_once './modelo/Tipospagos.php';
 require_once './modelo/Persona.php';
 require_once './modelo/Estudiante.php';
+require_once './assets/Helper.php';
 
 class CtrlPagos extends Controlador {
     public function index(){
         # echo "Hola Pago";
+        Helper::verificarLogin();
         $obj = new Pago;
         $data = $obj->getTodo();
 
@@ -30,6 +32,7 @@ class CtrlPagos extends Controlador {
 
     }
     public function eliminar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
         $obj =new Pago ($id);
@@ -39,6 +42,7 @@ class CtrlPagos extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        Helper::verificarLogin();
         $obj = NEW Tipospagos();
         $dataTp = $obj ->getTodo();
 
@@ -62,6 +66,7 @@ class CtrlPagos extends Controlador {
         
     }
     public function editar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "Editando: ".$id;
         $obj = new Pago($id);
@@ -91,6 +96,7 @@ class CtrlPagos extends Controlador {
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
+        Helper::verificarLogin();
         $id = $_POST['id'];
         $fecha = $_POST['fecha'];
         $total = $_POST['total'];

@@ -3,10 +3,12 @@ session_start();
 require_once './core/Controlador.php';
 require_once './modelo/ConceptoPago.php';
 require_once './modelo/CtaContable.php';
+require_once './assets/Helper.php';
 
 class CtrlConceptoPago extends Controlador {
     public function index(){
         # echo "Hola ConceptoPago";
+        Helper::verificarLogin();
         $obj = new ConceptoPago;
         $data = $obj->getTodo();
 
@@ -26,6 +28,7 @@ class CtrlConceptoPago extends Controlador {
     }
 
     public function eliminar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
         $obj =new ConceptoPago ($id);
@@ -35,6 +38,7 @@ class CtrlConceptoPago extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        Helper::verificarLogin();
         $datos= [
             'titulo'=>'Nuevo conceptosPago',
             'contenido'=>$this->mostrar('conceptosPago/formulario.php',null,true),
@@ -68,6 +72,7 @@ class CtrlConceptoPago extends Controlador {
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
+        Helper::verificarLogin();
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
         $monto = $_POST['monto'];

@@ -3,10 +3,12 @@ session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Estudiante.php';
 require_once './modelo/ProgramaEstudio.php';
+require_once './assets/Helper.php';
 
 class CtrlEstudiante extends Controlador {
     public function index(){
         # echo "Hola Estudiante";
+        Helper::verificarLogin();
         $obj = new Estudiante;
         $data = $obj->getTodo();
 
@@ -29,6 +31,7 @@ class CtrlEstudiante extends Controlador {
     }
 
     public function eliminar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
         $obj =new Estudiante ($id);
@@ -38,6 +41,7 @@ class CtrlEstudiante extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        Helper::verificarLogin();
         $obj = new ProgramaEstudio;
         $programas = $obj->mostrar();
         
@@ -51,6 +55,7 @@ class CtrlEstudiante extends Controlador {
         
     }
     public function editar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "Editando: ".$id;
         $obj = new ProgramaEstudio;
@@ -76,6 +81,7 @@ class CtrlEstudiante extends Controlador {
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
+        Helper::verificarLogin();
         $id = $_POST['id'];
         $nombres = $_POST['nombres'];
         $apellidos = $_POST['apellidos'];

@@ -2,10 +2,12 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Estado.php';
+require_once './assets/Helper.php';
 
 class CtrlEstado extends Controlador {
     public function index(){
         # echo "Hola Estado";
+        Helper::verificarLogin();
         $obj = new Estado;
         $data = $obj->getTodo();
 
@@ -27,6 +29,7 @@ class CtrlEstado extends Controlador {
     
         }
     public function eliminar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
         $obj =new Estado ($id);
@@ -45,6 +48,7 @@ class CtrlEstado extends Controlador {
         
     }
     public function editar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "Editando: ".$id;
         $obj = new Estado($id);
@@ -64,6 +68,7 @@ class CtrlEstado extends Controlador {
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
+        Helper::verificarLogin();
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
         $esNuevo = $_POST['esNuevo'];

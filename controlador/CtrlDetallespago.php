@@ -4,10 +4,12 @@ require_once './core/Controlador.php';
 require_once './modelo/Detallespagos.php';
 require_once './modelo/ConceptoPago.php';
 require_once './modelo/Pagos.php';
+require_once './assets/Helper.php';
 
 class CtrlDetallespago extends Controlador {
     public function index(){
         # echo "Hola Detallespago";
+        Helper::verificarLogin();
         $obj = new Detallespagos;
         $data = $obj->getTodo();
 
@@ -29,6 +31,7 @@ class CtrlDetallespago extends Controlador {
 
     }
     public function eliminar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
         $obj =new Detallespagos($id);
@@ -38,7 +41,7 @@ class CtrlDetallespago extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
-
+        Helper::verificarLogin();
         $obj = NEW ConceptoPago();
         $dataCp = $obj ->getTodo();
 
@@ -62,6 +65,7 @@ class CtrlDetallespago extends Controlador {
         
     }
     public function editar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "Editando: ".$id;
         $obj = new Detallespagos($id);
@@ -90,6 +94,7 @@ class CtrlDetallespago extends Controlador {
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
+        Helper::verificarLogin();
         $id = $_POST['id'];
         $cantidad = $_POST['cantidad'];
         $monto = $_POST['monto'];

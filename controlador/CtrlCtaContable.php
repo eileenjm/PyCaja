@@ -2,10 +2,12 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/CtaContable.php';
+require_once './assets/Helper.php';
 
 class CtrlCtaContable extends Controlador {
     public function index(){
                 # echo "Hola CtaContable";
+                Helper::verificarLogin();
                 $obj = new CtaContable;
                 $data = $obj->getTodo();
         
@@ -27,6 +29,7 @@ class CtrlCtaContable extends Controlador {
     }
 
     public function eliminar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
         $obj =new CtaContable ($id);
@@ -35,6 +38,7 @@ class CtrlCtaContable extends Controlador {
         $this->index();
     }
     public function nuevo(){
+        Helper::verificarLogin();
         $datos= [
             'titulo'=>'Nueva Cuenta Contable',
             'contenido'=>$this->mostrar('ctasContables/formulario.php',null,true),
@@ -43,6 +47,7 @@ class CtrlCtaContable extends Controlador {
         $this->mostrar('./plantilla/home.php',$datos);
     }
     public function editar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "Editando: ".$id;
         $obj = new CtaContable($id);
@@ -63,6 +68,7 @@ class CtrlCtaContable extends Controlador {
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
+        Helper::verificarLogin();
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];

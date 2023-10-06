@@ -1,4 +1,4 @@
-<a href="?ctrl=CtrlPagos&accion=nuevo">Nuevo Pago</a>
+<a href="?ctrl=CtrlPagos&accion=nuevo">Nuevo Pago</a>    
     <table class="table">
         <tr>
             <th>Id</th>

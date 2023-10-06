@@ -2,10 +2,12 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Tipospagos.php';
+require_once './assets/Helper.php';
 
 class CtrlTipospagos extends Controlador {
     public function index(){
         # echo "Hola Tipospago";
+        Helper::verificarLogin();
         $obj = new Tipospagos;
         $data = $obj->getTodo();
 
@@ -27,6 +29,7 @@ class CtrlTipospagos extends Controlador {
 
     }
     public function eliminar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
         $obj =new Tipospagos ($id);
@@ -36,6 +39,7 @@ class CtrlTipospagos extends Controlador {
     }
     public function nuevo(){
         # echo "Agregando..";
+        Helper::verificarLogin();
         $datos= [
             'titulo'=>'Nuevo Tipospagos',
             'contenido'=>$this->mostrar('Tipospagos/formulario.php',null,true),
@@ -45,6 +49,7 @@ class CtrlTipospagos extends Controlador {
         
     }
     public function editar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "Editando: ".$id;
         $obj = new Tipospagos($id);
@@ -64,6 +69,7 @@ class CtrlTipospagos extends Controlador {
     public function guardar(){
         # echo "Guardando..";
         # var_dump($_POST);
+        Helper::verificarLogin();
         $id = $_POST['id'];
         $tipo = $_POST['tipo'];
         $banco = $_POST['banco'];

@@ -2,10 +2,12 @@
 session_start();
 require_once './core/Controlador.php';
 require_once './modelo/ProgramaEstudio.php';
+require_once './assets/Helper.php';
 
 
 class CtrlProgramaEstudio extends Controlador {
     public function index(){
+        Helper::verificarLogin();
         $obj = new ProgramaEstudio();
         $data = $obj->mostrar();
 
@@ -27,6 +29,7 @@ class CtrlProgramaEstudio extends Controlador {
 
     }
     public function editar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         $obj = new ProgramaEstudio($id);
         $data = $obj->getRegistro();
@@ -38,6 +41,7 @@ class CtrlProgramaEstudio extends Controlador {
         $this->mostrar('./plantilla/home.php',$datos);
     }
     public function guardar(){
+        Helper::verificarLogin();
         $id=$_POST['id'];
         $nombre=$_POST['nombre'];
         $logo=$_POST['logo'];
@@ -60,6 +64,7 @@ class CtrlProgramaEstudio extends Controlador {
 
     }
     public function eliminar(){
+        Helper::verificarLogin();
         $id = $_GET['id'];
         $obj = new ProgramaEstudio($id);
         $respuesta = $obj->eliminar();
