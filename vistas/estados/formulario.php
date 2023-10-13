@@ -4,6 +4,7 @@ $nombre = isset($datos['nombre'])?$datos['nombre']:'';
 $esNuevo = isset($datos['id'])?0:1;
 $titulo = $esNuevo==1?'Nuevo Estado':'Editando Estado';
 ?>
+
     <form action="?ctrl=CtrlEstado&accion=guardar" method="post">
         id:
         <input class="form-control" type="text" name="id" value="<?=$id?>">

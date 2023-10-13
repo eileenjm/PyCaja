@@ -13,39 +13,36 @@ class CtrlEstado extends Controlador {
 
         # var_dump($data);exit;
 
+        $msg=$data['msg'];
         $datos = [
-            
             'datos'=>$data['data']
         ];
 
-        $home = $this->mostrar('estados/mostrar.php',$datos,true);
+            $home = $this->mostrar('estados/mostrar.php',$datos,true);
 
         $datos= [
             'titulo'=>'Estados',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
-        $this->mostrar('./plantilla/home.php',$datos);
-    
-        }
+    $this->mostrar('./plantilla/home.php',$datos);
+
+        # $this->mostrar('estados/mostrar.php',$datos);
+    }
+
     public function eliminar(){
         Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
         $obj =new Estado ($id);
         $obj->eliminar();
-
         $this->index();
     }
     public function nuevo(){
+        Helper::verificarLogin();
         # echo "Agregando..";
-        $datos= [
-            'titulo'=>'Nuevo Estado',
-            'contenido'=>$this->mostrar('estados/formulario.php',null,true),
-            'menu'=>$_SESSION['menu']
-        ];
-    $this->mostrar('./plantilla/home.php',$datos);
-        
+        $this->mostrar('estados/formulario.php');
     }
     public function editar(){
         Helper::verificarLogin();
@@ -57,24 +54,16 @@ class CtrlEstado extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('estados/formulario.php',$datos,true);
-        $datos = [
-            'titulo'=>'Editar Estado',
-            'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
-        ];
-        $this->mostrar('./plantilla/home.php',$datos);
+        $this->mostrar('estados/formulario.php',$datos);
     }
     public function guardar(){
+        Helper::verificarLogin();
         # echo "Guardando..";
         # var_dump($_POST);
-        Helper::verificarLogin();
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
         $esNuevo = $_POST['esNuevo'];
-
         $obj = new Estado ($id, $nombre);
-
         switch ($esNuevo) {
             case 0: # Editar
                 $data=$obj->actualizar();
@@ -84,10 +73,8 @@ class CtrlEstado extends Controlador {
                 $data=$obj->guardar();
                 break;
         }
-
         
         # var_dump($data);exit;
         $this->index();
-
     }
 }

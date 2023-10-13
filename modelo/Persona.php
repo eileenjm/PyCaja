@@ -44,6 +44,9 @@ class Persona extends Modelo {
     public function guardar(){
         $this->setTabla('personas');
         $datos = $this->getDatos();
+        $miClave = $this->generarClave('123456');
+        $datos+=["password"=>"'$miClave'"];   # Se genere la Clave POR DEFECTO
+        # var_dump($datos);exit;
         return $this->insert($datos);
     }
     public function editar(){
@@ -71,11 +74,40 @@ class Persona extends Modelo {
         ];
     }
     public function validar($login, $clave){
+        $clave = $this->generarClave($clave);
         $sql = "Select * from $this->_tabla
             WHERE usuario='$login' AND password='$clave'";
-        
-        $this->setSql($sql);
-        return $this->ejecutarSql();
-   
+
+            $this->setSql($sql);
+            //var_dump ($sql); exit;
+            $persona = $this->ejecutarSql()['data'];
+            //var_dump ($persona); exit; 
+            if (is_null($persona)){  # No existe la persona (usuario)
+                return null;
+            } else {            # Verificar los permisos
+                $sql = "Select p.*, pe.idpersona, pe.idmodulo, pe.idperfil
+                    , pf.perfil,m.nombre as modulo,m.version,m.icono
+                    from permisos pe
+                    INNER JOIN personas p ON pe.idpersona=p.id
+                    INNER JOIN perfiles pf ON pf.id=pe.idperfil
+                    INNER JOIN modulos_sys m ON m.id=pe.idmodulo
+                    WHERE pe.idpersona=".$persona[0]['id'];
+                $this->setSql($sql);
+                return $this->ejecutarSql()['data'];
+    
+            }
+        }
+    public function cambiarClave($clave){
+        $miClave = $this->generarClave($clave);
+        $datos = [
+            'password'=>"'$miClave'"
+        ];
+
+
+        $wh = "id=$this->id";
+        return $this->update($wh,$datos);
+    }
+    private function generarClave($clave){
+        return substr (md5($clave),0,15);     # Cambiamos NUESTRO ALGORITMO
     }
 }

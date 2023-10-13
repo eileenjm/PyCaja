@@ -20,9 +20,9 @@ class CtrlPersona extends Controlador {
         $login = $_POST['usuario'];
         $clave = $_POST['clave'];
         $obj = new Persona();
-        $data = $obj->validar($login, $clave)['data'];
+        $data = $obj->validar($login, $clave);
 
-        # var_dump($data);exit;
+        //var_dump($data);exit;
         if (! is_null($data)){
             $_SESSION['id']=$data[0]['id'];
             $_SESSION['usuario']=$data[0]['usuario'];
@@ -54,4 +54,24 @@ class CtrlPersona extends Controlador {
             'CtrlProgramaEstudio'=>'Programa Estudio',
         ];
     }
+    public function accederModulo(){
+        $idModulo = $_GET['idModulo'];
+        $idPerfil = $_GET['idPerfil'];
+        $idPersona = $_GET['id'];
+
+        $obj = new Persona($idPersona);
+        $data = $obj->editar()['data'];
+        if(! is_null($data)){
+
+            $_SESSION['id']=$data[0]['id'];
+            $_SESSION['usuario']=$data[0]['usuario'];
+            $_SESSION['nombre']=$data[0]['nombres'] . ' '. $data[0]['apellidos'];
+        }
+
+        $_SESSION['menu']= Helper::getMenu($idModulo,$idPerfil);
+
+       # var_dump($_SESSION['menu']);exit;
+        header("Location: ?");
+    }
+
 }

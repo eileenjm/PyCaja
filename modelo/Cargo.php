@@ -1,9 +1,9 @@
 <?php
 require_once './core/Modelo.php';
-
 class Cargo extends Modelo {
     private $id;
     private $nombre;
+
     private $_tabla='cargos';
 
     public function __construct($id=null,$nombre=null){
