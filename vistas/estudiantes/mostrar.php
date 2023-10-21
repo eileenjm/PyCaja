@@ -1,7 +1,8 @@
 
-
-<a href="?ctrl=CtrlEstudiante&accion=nuevo">Nuevo Estudiante</a>
-
+<a href="#" class="btn btn-primary nuevo">
+    <i class="fa fa-plus"></i> 
+    Nuevo Estudiante
+</a>
     <table class="table">
         <tr>
             <th>Id</th>
@@ -32,11 +33,14 @@ foreach ($datos as $d) {
     <td><?=$d['fechaNacimiento']?></td>
     <td><?=$d['programa']?></td>
     <td>
-        <a href="?ctrl=CtrlEstudiante&accion=editar&id=<?=$d['id']?>">
+    <a data-id="<?=$d["id"]?>" href="#" class="btn btn-success editar">
+            <i class="fa fa-edit"></i> 
             Editar
         </a>
-        <a href="?ctrl=CtrlEstudiante&accion=eliminar&id=<?=$d['id']?>">Eliminar</a>
-        
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["nombres"]?>" href="#" class="btn btn-danger eliminar">
+          <i class="fa fa-trash"></i>  
+          Eliminar
+        </a>
     </td>
 </tr>
 

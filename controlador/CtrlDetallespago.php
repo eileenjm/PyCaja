@@ -14,7 +14,7 @@ class CtrlDetallespago extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
             
             'datos'=>$data['data']
@@ -48,6 +48,7 @@ class CtrlDetallespago extends Controlador {
         $obj = NEW Pago();
         $datap = $obj ->getTodo();
 
+        $msg='';
         $datos = [
             //'datos'=> $data['data'][0],
             'ConceptoPago' => $dataCp['data'],
@@ -59,7 +60,8 @@ class CtrlDetallespago extends Controlador {
         $datos= [
             'titulo'=>'Nuevo Detalle Pago',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
         $this->mostrar('./plantilla/home.php',$datos);
         
@@ -77,6 +79,7 @@ class CtrlDetallespago extends Controlador {
         $obj = NEW Pago();
         $datap = $obj ->getTodo();
 
+        $msg=$data['msg'];
         $datos = [
             'datos'=> $data['data'][0],
             'ConceptoPago' => $dataCp['data'],
@@ -87,7 +90,8 @@ class CtrlDetallespago extends Controlador {
         $datos= [
            'titulo'=>'Editar Detalles Pago',
            'contenido'=>$home,
-           'menu'=>$_SESSION['menu']
+           'menu'=>$_SESSION['menu'],
+           'msg'=>$msg
        ];
         $this->mostrar('./plantilla/home.php',$datos);
     }

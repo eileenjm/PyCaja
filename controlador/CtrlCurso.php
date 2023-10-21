@@ -1,27 +1,27 @@
 <?php
 session_start();
 require_once './core/Controlador.php';
-require_once './modelo/Tipospagos.php';
+require_once './modelo/Curso.php';
 require_once './assets/Helper.php';
 
-class CtrlTipospagos extends Controlador {
+class CtrlCurso extends Controlador {
     public function index(){
-        # echo "Hola Tipospago";
+        # echo "Hola Cargo";
         Helper::verificarLogin();
-        $obj = new Tipospagos;
+        $obj = new Curso;
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
         $msg=$data['msg'];
         $datos = [
-            
+
             'datos'=>$data['data']
         ];
 
-        $home = $this->mostrar('Tipospagos/mostrar.php',$datos,true);
+        $home = $this->mostrar('cursos/mostrar.php',$datos,true);
 
         $datos= [
-            'titulo'=>'Tipos de Pagos',
+            'titulo'=>'Cursos para Matrícula',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
@@ -29,73 +29,75 @@ class CtrlTipospagos extends Controlador {
     $this->mostrar('./plantilla/home.php',$datos);
 
     }
+
     public function eliminar(){
         Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
-        $obj =new Tipospagos ($id);
+        $obj =new Cargo ($id);
         $obj->eliminar();
 
         $this->index();
     }
     public function nuevo(){
-        # echo "Agregando..";
         Helper::verificarLogin();
-        $msg='';
+        # echo "Agregando..";
+        /* $msg='';
         $datos= [
-            'titulo'=>'Nuevo Tipospagos',
-            'contenido'=>$this->mostrar('Tipospagos/formulario.php',null,true),
+            'titulo'=>'Nuevo Cargo',
+            'contenido'=>$this->mostrar('cargos/formulario.php',null,true),
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
         ];
-        $this->mostrar('./plantilla/home.php',$datos);
-        
+    $this->mostrar('./plantilla/home.php',$datos); */
+
+    $this->mostrar('cargos/formulario.php');
+
     }
     public function editar(){
         Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "Editando: ".$id;
-        $obj = new Tipospagos($id);
+        $obj = new Cargo($id);
         $data = $obj->editar();
         # var_dump($data);exit;
         $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('pagos/formulario.php',$datos,true);
-        $datos = [
-            'titulo'=>'Editar tipo de Pago',
+        /* $home = $this->mostrar('cargos/formulario.php',$datos,true);
+         $datos= [
+            'titulo'=>'Editar Cargo',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
         ];
-        $this->mostrar('./plantilla/home.php',$datos);
+    $this->mostrar('./plantilla/home.php',$datos); */
+    $this->mostrar('cargos/formulario.php',$datos);
+
     }
     public function guardar(){
+        Helper::verificarLogin();
         # echo "Guardando..";
         # var_dump($_POST);
-        Helper::verificarLogin();
         $id = $_POST['id'];
-        $tipo = $_POST['tipo'];
-        $banco = $_POST['banco'];
-        $nroCuenta = $_POST['nroCuenta'];
+        $nombre = $_POST['nombre'];
         $esNuevo = $_POST['esNuevo'];
 
-        $obj = new Tipospagos ($id, $tipo, $banco, $nroCuenta);
+        $obj = new Cargo ($id, $nombre);
 
         switch ($esNuevo) {
             case 0: # Editar
                 $data=$obj->actualizar();
                 break;
-            
+
             default: # Nuevo
                 $data=$obj->guardar();
                 break;
         }
-
-        
         # var_dump($data);exit;
         $this->index();
-
     }
+
+
 }

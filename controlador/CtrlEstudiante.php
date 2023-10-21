@@ -11,6 +11,8 @@ class CtrlEstudiante extends Controlador {
         $obj = new Estudiante;
         $data = $obj->getTodo();
         # var_dump($data);exit;
+
+        $msg=$data['msg'];
         $datos = [
             
             'datos'=>$data['data']
@@ -19,7 +21,8 @@ class CtrlEstudiante extends Controlador {
         $datos= [
             'titulo'=>'Estudiantes',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -36,7 +39,7 @@ class CtrlEstudiante extends Controlador {
         # echo "Agregando..";
         $obj = new ProgramaEstudio;
         $programas = $obj->mostrar();
-        
+        $msg='';
         $datos = [
             // 'datos'=>$data['data'][0],
             'programas'=>$programas['data']
@@ -46,7 +49,8 @@ class CtrlEstudiante extends Controlador {
          $datos= [
             'titulo'=>'Editar Estudiante',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
         
@@ -60,6 +64,7 @@ class CtrlEstudiante extends Controlador {
         $obj = new Estudiante($id);
         $data = $obj->editar();
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0],
             'programas'=>$programas['data']
@@ -68,7 +73,8 @@ class CtrlEstudiante extends Controlador {
          $datos= [
             'titulo'=>'Editar Estudiante',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
         

@@ -12,7 +12,7 @@ class CtrlCtaContable extends Controlador {
                 $data = $obj->getTodo();
         
                 # var_dump($data);exit;
-        
+        $msg=$data['msg'];
         $datos = [
             
             'datos'=>$data['data']
@@ -22,7 +22,8 @@ class CtrlCtaContable extends Controlador {
         $datos= [
             'titulo'=>'Cuentas Contables',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
 
         $this->mostrar('./plantilla/home.php',$datos);
@@ -42,7 +43,8 @@ class CtrlCtaContable extends Controlador {
         $datos= [
             'titulo'=>'Nueva Cuenta Contable',
             'contenido'=>$this->mostrar('ctasContables/formulario.php',null,true),
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
         $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -61,7 +63,8 @@ class CtrlCtaContable extends Controlador {
         $datos = [
             'titulo'=>'Editar Cta Contable',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
         $this->mostrar('./plantilla/home.php',$datos);
     }

@@ -13,6 +13,7 @@ class CtrlConceptoPago extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data']
         ];
@@ -21,7 +22,8 @@ class CtrlConceptoPago extends Controlador {
         $datos= [
             'titulo'=>'Conceptos de Pago',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
 
         $this->mostrar('./plantilla/home.php',$datos);
@@ -39,10 +41,12 @@ class CtrlConceptoPago extends Controlador {
     public function nuevo(){
         # echo "Agregando..";
         Helper::verificarLogin();
+        $msg='';
         $datos= [
             'titulo'=>'Nuevo conceptosPago',
             'contenido'=>$this->mostrar('conceptosPago/formulario.php',null,true),
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
         $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -56,6 +60,7 @@ class CtrlConceptoPago extends Controlador {
         $dataCta = $obj->getTodo();
 
         # var_dump($data);exit;
+        $msg=$data['msg'];
         $datos = [
             'datos'=>$data['data'][0],
             'ctasContables'=>$dataCta['data']
@@ -65,7 +70,8 @@ class CtrlConceptoPago extends Controlador {
         $datos= [
            'titulo'=>'Editar Concepto Pago',
            'contenido'=>$home,
-           'menu'=>$_SESSION['menu']
+           'menu'=>$_SESSION['menu'],
+           'msg'=>$msg
        ];
         $this->mostrar('./plantilla/home.php',$datos);
     }

@@ -1,6 +1,8 @@
-
-<a href="?ctrl=CtrlConceptoPago&accion=nuevo">Nuevo Concepto Pago</a>
-    <table class="table">
+<a href="#" class="btn btn-primary nuevo">
+    <i class="fa fa-plus"></i> 
+    Nuevo Concepto Pago 
+</a>
+<table class="table">
         <tr>
             <th>Id</th>
             <th>Nombre</th>
@@ -26,11 +28,14 @@ foreach ($datos as $d) {
         <?=$d['descripcion']?>
     </td>
     <td>
-        <a href="?ctrl=CtrlConceptoPago&accion=editar&id=<?=$d['id']?>">
+    <a data-id="<?=$d["id"]?>" href="#" class="btn btn-success editar">
+            <i class="fa fa-edit"></i> 
             Editar
         </a>
-        <a href="?ctrl=CtrlConceptoPago&accion=eliminar&id=<?=$d['id']?>">Eliminar</a>
-        
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["nombre"]?>" href="#" class="btn btn-danger eliminar">
+          <i class="fa fa-trash"></i>  
+          Eliminar
+        </a>
     </td>
 </tr>
 

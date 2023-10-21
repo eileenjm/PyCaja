@@ -1,6 +1,4 @@
-
-    <a href="?ctrl=CtrlProgramaEstudio&accion=nuevo">Nuevo Programa de Estudio</a>
-    <table class="table table-hover">
+<table class="table table-hover">
         <tr>
             <th>Id</th>
             <th>Nombre</th>
@@ -23,10 +21,14 @@ foreach ($data as $d) {
         </td>
         <td>
             
-           <a href="?ctrl=CtrlProgramaEstudio&accion=editar&id=<?=$d['id']?>"> Editar</a>
-
-           <a href="?ctrl=CtrlProgramaEstudio&accion=eliminar&id=<?=$d['id']?>">Eliminar</a>
-            
+        <a data-id="<?=$d["id"]?>" href="#" class="btn btn-success editar">
+            <i class="fa fa-edit"></i> 
+            Editar
+        </a>
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["nombre"]?>" href="#" class="btn btn-danger eliminar">
+          <i class="fa fa-trash"></i>  
+          Eliminar
+        </a>
         </td>
     </tr>
 

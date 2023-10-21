@@ -52,6 +52,7 @@ class CtrlPersona extends Controlador {
             'CtrlPagos'=>'Pagos',
             'CtrlDetallespago'=>'Detalles Pagos',
             'CtrlProgramaEstudio'=>'Programa Estudio',
+            'CtrlCurso'=>'Curso',
         ];
     }
     public function accederModulo(){

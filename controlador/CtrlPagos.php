@@ -15,7 +15,7 @@ class CtrlPagos extends Controlador {
         $data = $obj->getTodo();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
             
             'datos'=>$data['data']
@@ -26,7 +26,8 @@ class CtrlPagos extends Controlador {
         $datos= [
             'titulo'=>'Pagos',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
 
@@ -49,7 +50,7 @@ class CtrlPagos extends Controlador {
         $obj = NEW Persona();
         $dataPe = $obj ->getTodo();
 
-
+        $msg='';
         $datos = [
             //'datos'=> $data['data'][0],
             'Tipospagos' => $dataTp['data'],
@@ -60,7 +61,8 @@ class CtrlPagos extends Controlador {
         $datos= [
             'titulo'=>'Nuevo Pago',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
         $this->mostrar('./plantilla/home.php',$datos);
         
@@ -78,7 +80,8 @@ class CtrlPagos extends Controlador {
         $obj = NEW Persona();
         $dataPe = $obj ->getTodo();
 
-
+        $msg=$data['msg'];
+        
         $datos = [
             'datos'=>$data['data'][0],
             'Tipospagos' => $dataTp['data'],
@@ -89,7 +92,8 @@ class CtrlPagos extends Controlador {
         $datos = [
             'titulo'=>'Editar Pago',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
         $this->mostrar('./plantilla/home.php',$datos);
     }

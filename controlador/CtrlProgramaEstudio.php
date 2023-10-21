@@ -12,7 +12,7 @@ class CtrlProgramaEstudio extends Controlador {
         $data = $obj->mostrar();
 
         # var_dump($data);exit;
-
+        $msg=$data['msg'];
         $datos = [
             'titulo'=>'Programa de Estudios',
             'data'=>$data['data']
@@ -23,7 +23,8 @@ class CtrlProgramaEstudio extends Controlador {
         $datos= [
             'titulo'=>'Programa de Estudios',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'msg'=>$msg
         ];
     $this->mostrar('./plantilla/home.php',$datos);
 
@@ -33,9 +34,11 @@ class CtrlProgramaEstudio extends Controlador {
         $id = $_GET['id'];
         $obj = new ProgramaEstudio($id);
         $data = $obj->getRegistro();
+        $msg=$data['msg'];
         
         $datos = [
             'obj'=>$data['data'][0],
+            'msg'=>$msg
             
         ];
         $this->mostrar('./plantilla/home.php',$datos);

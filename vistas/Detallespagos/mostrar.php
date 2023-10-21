@@ -1,4 +1,7 @@
-<a href="?ctrl=CtrlDetallespago&accion=nuevo">Nuevo Detalle Pago</a>
+<a href="#" class="btn btn-primary nuevo">
+    <i class="fa fa-plus"></i> 
+    Nuevo Detalle Pago
+</a>
 <div class="card-body p-0">
               <div class="mailbox-controls">
                 <!-- Check all button -->
@@ -84,10 +87,14 @@ foreach ($datos as $d) {
         <?=$d['igv']?>
     </td>
     <td>
-        <a href="?ctrl=CtrlDetallespago&accion=editar&id=<?=$d['id']?>">
+    <a data-id="<?=$d["id"]?>" href="#" class="btn btn-success editar">
+            <i class="fa fa-edit"></i> 
             Editar
         </a>
-        <a href="?ctrl=CtrlDetallespago&accion=eliminar&id=<?=$d['id']?>">Eliminar</a>
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["cant"]?>" href="#" class="btn btn-danger eliminar">
+          <i class="fa fa-trash"></i>  
+          Eliminar
+        </a>
         
     </td>
 </tr>
