@@ -2,8 +2,10 @@
     <i class="fa fa-plus"></i> 
     Nuevo Cargo 
 </a>
-
-
+<a href="#" class="btn btn-success" id="imprimirPDF">
+    <i class="fa fa-print"></i> 
+    Imprimir 
+</a>
     <table class="table">
       <thead>
         <tr>
@@ -41,5 +43,4 @@ foreach ($datos as $d) {
 ?>
       </tbody>
     </table>
-
     <a href="?">Retornar</a>

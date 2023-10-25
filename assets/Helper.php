@@ -68,6 +68,7 @@ abstract class Helper
             'CtrlConceptoPago'=>'Conceptos de Pago',
             'CtrlEstudiante'=>'Estudiante',
             'CtrlCurso'=>'Cursos',
+            'CtrlPagos'=>'Pagos',
         ]; 
     }
     private static function getMenuTramiteAdministrativo(){

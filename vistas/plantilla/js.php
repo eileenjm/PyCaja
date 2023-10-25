@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
   $(function () {
     'use strict'
@@ -9,8 +10,8 @@
           let titulo =''
           let cuerpo =''
         <?php } ?>
-
-
+   
+   
           if(titulo!=''){
             let icono = (titulo=='Error')?'error':'success';
             $.toast({
@@ -24,10 +25,10 @@
                     hideAfter: 2000
             });
         }
-
+   
         $("#txtBuscar").keyup(function (e) { 
             e.preventDefault();
-
+            
             let clave= $("#txtBuscar").val().trim();
             if (clave){
                 $("table").find('tbody tr').hide();
@@ -52,7 +53,7 @@
 
             }
         });
-
+        
         $('.nuevo').click( function(){ 
             let linkNuevo=$(this).html();
             // alert(linkNuevo)
@@ -107,54 +108,44 @@
         $('.eliminar').click( function(){ 
             var id= $(this).data('id');
             var nombre= $(this).data('nombre');
-
+           
             $('.modal-title').html('<i class="fa fa-trash"></i> Eliminando el Reg.: '+id );
-
+            
             $('.reg-eliminacion').html('Registro: <code>' + nombre +'</code>');
-
+            
             $('#btn-confirmar').attr('href', '?ctrl=<?=isset($_GET['ctrl'])?$_GET['ctrl']:'';?>&accion=eliminar&id='+id);
-
+            
             $('#modal-eliminar').modal('show');
-
+            
         });
         $('.cambiarClave').click( function(){ 
             var id= $(this).data('id');
             var nombre= $(this).data('nombre');
-
+           
             $('.modal-title').html('<i class="fa fa-trash"></i> Restablecer clave');
-
+            
             $('.reg-eliminacion').html('Registro: <code>' + nombre +'</code>');
-
+            
             $('#btn-confirmar').attr('href', '?ctrl=<?=isset($_GET['ctrl'])?$_GET['ctrl']:'';?>&accion=restablecerClave&id='+id);
-
+            
             $('#modal-eliminar').modal('show');
-
+            
         });
         $('#imprimirPDF').click(function (e) { 
             e.preventDefault();
             let link=$(this).html();
-            alert(link)
+            //alert(link)
             $(this).html('<i class="fa fa-spinner"></i> Descargando...');
-            var datos= <?=json_encode(isset($data)?$data:'');?>;
-            let titulo=$('#titulo').html();
+            var datos= <?=json_encode(isset($datos)?$datos:'');?>;
+            let titulo=$('#titulo').html().trim();
 
-            /**
-             * Añadiendo imagenes
-             */
-             // var logo = new Image();
-
-            // logo.src = 'dist/img/prod-1.jpg';
-            // logo.src = 'recursos/images/logo.JPG';
-
-             /**
-              * Fin añadir imagen
-              */
             var doc = new jsPDF('p')
                  // doc.addImage(logo, 'JPEG', 10, 10,20,22);
-
+                imprimirEncabezado(doc)
+                imprimirPie(doc)
                 doc.setFontSize(20)
                 doc.setTextColor(255, 0, 0) // Rojo
-                doc.text(35, 25, titulo)
+                doc.text(60, 25, titulo)
                 let columnas =[]
                 columnas.push( Object.keys(datos[0]) )
 
@@ -171,10 +162,21 @@
                 })
             $('#imprimirPDF').html(link);
             doc.save(titulo)
-
+            
         });
-
-
-
+        function imprimirEncabezado(doc){
+            // alert('Imprimiendo Cabecera')
+            doc.setFontSize(10)
+            doc.setTextColor(255, 0, 0) // Rojo
+            doc.text(10, 15, 'Sistema IES-JCM')
+            doc.line(10,17,200,17)
+        }
+        function imprimirPie(doc){
+            // alert('Imprimiendo Cabecera')
+            doc.setFontSize(10)
+            doc.setTextColor(0, 0, 255) // Azul
+            doc.text(200, 280, 'CopyRight 2023')
+            doc.line(10,273,200,273)
+        }
   });
 </script>

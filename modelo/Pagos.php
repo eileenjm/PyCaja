@@ -27,6 +27,11 @@ class Pago extends Modelo {
     public function eliminar(){
         return $this->deleteById($this->id);
     }
+    public function getMontosXConceptoPago(){
+        $sql = "Select * from v_montoRecaudado_x_conceptoPago";
+        $this->setSql($sql);
+        return $this->ejecutarSql()['data'];
+    }
     public function guardar(){
         $datos = [
             'id'=>$this->id,

@@ -12,10 +12,19 @@ class CtrlPagos extends Controlador {
         # echo "Hola Pago";
         Helper::verificarLogin();
         $obj = new Pago;
-        $data = $obj->getTodo();
+        $data = $obj->getMontosXConceptoPago();
+        $datos = [
 
+            'label'=> json_encode(array_column($data, 'nombre')),
+            'montos'=> json_encode(array_column($data, 'suma'))
+        ];
+        $home=$this->mostrar('pagos/estadisticas.php',$datos, true);
+        $datos = [
+            'contenido'=> $home
+        ];
         # var_dump($data);exit;
-        $msg=$data['msg'];
+/*         $msg=$data['msg'];
+        $data = $obj->getTodo();
         $datos = [
             
             'datos'=>$data['data']
@@ -28,7 +37,7 @@ class CtrlPagos extends Controlador {
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
+        ]; */
     $this->mostrar('./plantilla/home.php',$datos);
 
     }

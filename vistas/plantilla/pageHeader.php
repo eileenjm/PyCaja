@@ -1,9 +1,9 @@
 <!-- Content Header (Page header) -->
-    <div class="content-header">
+<div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">
+            <h1 class="m-0" id="titulo">
               <?=isset($titulo)?$titulo:'Inicio'?>
             </h1>
           </div><!-- /.col -->
