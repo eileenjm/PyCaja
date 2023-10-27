@@ -1,3 +1,7 @@
+<a href="#" class="btn btn-success" id="imprimirPDF">
+    <i class="fa fa-print"></i> 
+    Imprimir 
+</a>
 <table class="table table-hover">
         <tr>
             <th>Id</th>

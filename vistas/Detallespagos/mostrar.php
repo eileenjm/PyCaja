@@ -2,6 +2,10 @@
     <i class="fa fa-plus"></i> 
     Nuevo Detalle Pago
 </a>
+<a href="#" class="btn btn-success" id="imprimirPDF">
+    <i class="fa fa-print"></i> 
+    Imprimir 
+</a>
 <div class="card-body p-0">
               <div class="mailbox-controls">
                 <!-- Check all button -->

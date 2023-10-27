@@ -22,7 +22,8 @@ class CtrlEstudiante extends Controlador {
             'titulo'=>'Estudiantes',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
-            'msg'=>$msg
+            'msg'=>$msg,
+            'datos'=>$data['data']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
     }
@@ -44,15 +45,15 @@ class CtrlEstudiante extends Controlador {
             // 'datos'=>$data['data'][0],
             'programas'=>$programas['data']
         ];
-        $home = $this->mostrar('estudiantes/formulario.php',$datos,true);
+/*         $home = $this->mostrar('estudiantes/formulario.php',$datos,true);
 
          $datos= [
             'titulo'=>'Editar Estudiante',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
-    $this->mostrar('./plantilla/home.php',$datos);
+        ];   */
+    $this->mostrar('estudiantes/formulario.php',$datos);
         
     }
     public function editar(){
@@ -69,14 +70,14 @@ class CtrlEstudiante extends Controlador {
             'datos'=>$data['data'][0],
             'programas'=>$programas['data']
         ];
-        $home = $this->mostrar('estudiantes/formulario.php',$datos,true);
+/*         $home = $this->mostrar('estudiantes/formulario.php',$datos,true);
          $datos= [
             'titulo'=>'Editar Estudiante',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
-    $this->mostrar('./plantilla/home.php',$datos);
+        ]; */
+    $this->mostrar('estudiantes/formulario.php',$datos);
         
     }
     public function guardar(){

@@ -20,7 +20,8 @@ class CtrlPagos extends Controlador {
         ];
         $home=$this->mostrar('pagos/estadisticas.php',$datos, true);
         $datos = [
-            'contenido'=> $home
+            'contenido'=> $home,
+            'datos'=>$data['data']
         ];
         # var_dump($data);exit;
 /*         $msg=$data['msg'];

@@ -23,7 +23,8 @@ class CtrlConceptoPago extends Controlador {
             'titulo'=>'Conceptos de Pago',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
-            'msg'=>$msg
+            'msg'=>$msg,
+            'datos'=>$data['data']
         ];
 
         $this->mostrar('./plantilla/home.php',$datos);
@@ -41,14 +42,21 @@ class CtrlConceptoPago extends Controlador {
     public function nuevo(){
         # echo "Agregando..";
         Helper::verificarLogin();
+        $obj = new CtaContable;
+        $dataCta = $obj->getTodo();
         $msg='';
-        $datos= [
+        $datos = [
+            // 'datos'=>$data['data'][0],
+            'ctasContables'=>$dataCta['data']
+        ];
+/*         $msg=''; */
+/*          $datos= [
             'titulo'=>'Nuevo conceptosPago',
             'contenido'=>$this->mostrar('conceptosPago/formulario.php',null,true),
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
-        $this->mostrar('./plantilla/home.php',$datos);
+        ]; */
+        $this->mostrar('conceptosPago/formulario.php',$datos);
     }
     public function editar(){
         $id = $_GET['id'];
@@ -65,15 +73,15 @@ class CtrlConceptoPago extends Controlador {
             'datos'=>$data['data'][0],
             'ctasContables'=>$dataCta['data']
         ];
-        $home = $this->mostrar('conceptosPago/formulario.php',$datos,true);
+/*         $home = $this->mostrar('conceptosPago/formulario.php',$datos,true);
 
         $datos= [
            'titulo'=>'Editar Concepto Pago',
            'contenido'=>$home,
            'menu'=>$_SESSION['menu'],
            'msg'=>$msg
-       ];
-        $this->mostrar('./plantilla/home.php',$datos);
+       ]; */
+        $this->mostrar('conceptosPago/formulario.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";

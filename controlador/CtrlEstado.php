@@ -24,7 +24,8 @@ class CtrlEstado extends Controlador {
             'titulo'=>'Estados',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
-            'msg'=>$msg
+            'msg'=>$msg,
+            'datos'=>$data['data']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
 

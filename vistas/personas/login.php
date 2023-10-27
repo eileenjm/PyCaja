@@ -6,6 +6,7 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Iniciar Sesión</p>
+
       <form action="?ctrl=CtrlPersona&accion=login" method="post">
         <div class="input-group mb-3">
           <input name="usuario" type="text" class="form-control" placeholder="Usuario">
@@ -39,8 +40,10 @@
           <!-- /.col -->
         </div>
       </form>
+
       
       <!-- /.social-auth-links -->
+
       <p class="mb-1">
         <a href="forgot-password.html">Olvide mi contraseña</a>
       </p>
@@ -52,3 +55,4 @@
   </div>
 </div>
 <!-- /.login-box -->
+

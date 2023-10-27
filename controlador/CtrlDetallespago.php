@@ -25,7 +25,8 @@ class CtrlDetallespago extends Controlador {
         $datos= [
             'titulo'=>'Detallespagos',
             'contenido'=>$home,
-            'menu'=>$_SESSION['menu']
+            'menu'=>$_SESSION['menu'],
+            'datos'=>$data['data']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
 
@@ -54,7 +55,7 @@ class CtrlDetallespago extends Controlador {
             'ConceptoPago' => $dataCp['data'],
             'Pagos' => $datap['data']
         ];
-        $home = $this->mostrar('Detallespagos/formulario.php',$datos,true);
+/*         $home = $this->mostrar('Detallespagos/formulario.php',$datos,true);
 
 
         $datos= [
@@ -62,8 +63,8 @@ class CtrlDetallespago extends Controlador {
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
-        $this->mostrar('./plantilla/home.php',$datos);
+        ]; */
+        $this->mostrar('Detallespagos/formulario.php',$datos);
         
     }
     public function editar(){
@@ -72,28 +73,28 @@ class CtrlDetallespago extends Controlador {
         # echo "Editando: ".$id;
         $obj = new Detallespagos($id);
         $data = $obj->editar();
-        #var_dump($data);exit;
+       // var_dump($data);exit;
         $obj = NEW ConceptoPago();
         $dataCp = $obj ->getTodo();
 
         $obj = NEW Pago();
         $datap = $obj ->getTodo();
 
-        $msg=$data['msg'];
+/*         $msg=$data['msg']; */
         $datos = [
             'datos'=> $data['data'][0],
             'ConceptoPago' => $dataCp['data'],
             'Pagos' => $datap['data']
         ];
-        $home = $this->mostrar('Detallespagos/formulario.php',$datos,true);
+/*         $home = $this->mostrar('Detallespagos/formulario.php',$datos,true);
 
         $datos= [
            'titulo'=>'Editar Detalles Pago',
            'contenido'=>$home,
            'menu'=>$_SESSION['menu'],
            'msg'=>$msg
-       ];
-        $this->mostrar('./plantilla/home.php',$datos);
+       ]; */
+        $this->mostrar('Detallespagos/formulario.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";

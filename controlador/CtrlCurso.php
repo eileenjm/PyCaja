@@ -24,7 +24,8 @@ class CtrlCurso extends Controlador {
             'titulo'=>'Cursos para Matrícula',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
-            'msg'=>$msg
+            'msg'=>$msg,
+            'datos'=>$data['data']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
 

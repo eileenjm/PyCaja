@@ -15,7 +15,8 @@ class CtrlProgramaEstudio extends Controlador {
         $msg=$data['msg'];
         $datos = [
             'titulo'=>'Programa de Estudios',
-            'data'=>$data['data']
+            'data'=>$data['data'],
+            'datos'=>$data['data']
         ];
 
         $home = $this->mostrar('programaEstudios/mostrar.php',$datos,true);
@@ -41,7 +42,7 @@ class CtrlProgramaEstudio extends Controlador {
             'msg'=>$msg
             
         ];
-        $this->mostrar('./plantilla/home.php',$datos);
+        $this->mostrar('programaEstudios/formulario.php',$datos);
     }
     public function guardar(){
         Helper::verificarLogin();

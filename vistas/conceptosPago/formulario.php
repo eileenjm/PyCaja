@@ -5,7 +5,7 @@ $monto = isset($datos['monto'])?$datos['monto']:'';
 $idCta = isset($datos['idCta'])?$datos['idCta']:'';
 
 $esNuevo = isset($datos['id'])?0:1;
-$titulo = $esNuevo==1?'Nuevo Cargo':'Editando Cargo';
+$titulo = $esNuevo==1?'Nuevo Concepto de Pago':'Editando Concepto de Pago';
 ?>
     <form action="?ctrl=CtrlConceptoPago&accion=guardar" method="post">
         id:
@@ -37,7 +37,7 @@ $titulo = $esNuevo==1?'Nuevo Cargo':'Editando Cargo';
         </select>
         <!-- <input type="text" name="idCta" value="<?=$idCta?>"> -->
         <br>
-        <input type="submit" value="Guardar">
+        <input class="btn btn-primary mb-3" type="submit" value="Guardar">
 
     </form>
 

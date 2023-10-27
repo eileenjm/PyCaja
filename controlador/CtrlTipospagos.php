@@ -24,7 +24,8 @@ class CtrlTipospagos extends Controlador {
             'titulo'=>'Tipos de Pagos',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
-            'msg'=>$msg
+            'msg'=>$msg,
+            'datos'=>$data['data']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
 
@@ -41,14 +42,14 @@ class CtrlTipospagos extends Controlador {
     public function nuevo(){
         # echo "Agregando..";
         Helper::verificarLogin();
-        $msg='';
+/*         $msg='';
         $datos= [
             'titulo'=>'Nuevo Tipospagos',
             'contenido'=>$this->mostrar('Tipospagos/formulario.php',null,true),
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
-        $this->mostrar('./plantilla/home.php',$datos);
+        ]; */
+        $this->mostrar('Tipospagos/formulario.php');
         
     }
     public function editar(){
@@ -62,14 +63,14 @@ class CtrlTipospagos extends Controlador {
         $datos = [
             'datos'=>$data['data'][0]
         ];
-        $home = $this->mostrar('pagos/formulario.php',$datos,true);
+/*         $home = $this->mostrar('pagos/formulario.php',$datos,true);
         $datos = [
             'titulo'=>'Editar tipo de Pago',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
-        $this->mostrar('./plantilla/home.php',$datos);
+        ]; */
+        $this->mostrar('Tipospagos/formulario.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";

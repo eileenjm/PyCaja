@@ -3,7 +3,10 @@
     <i class="fa fa-plus"></i> 
     Ver Carrito
 </a>
-
+<a href="#" class="btn btn-success" id="imprimirPDF">
+    <i class="fa fa-print"></i> 
+    Imprimir 
+</a>
 
     <table class="table">
       <thead>

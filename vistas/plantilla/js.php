@@ -175,7 +175,7 @@
             // alert('Imprimiendo Cabecera')
             doc.setFontSize(10)
             doc.setTextColor(0, 0, 255) // Azul
-            doc.text(200, 280, 'CopyRight 2023')
+            doc.text(160, 280, 'CopyRight 2023')
             doc.line(10,273,200,273)
         }
   });

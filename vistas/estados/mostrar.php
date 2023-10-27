@@ -3,6 +3,10 @@
     <i class="fa fa-plus"></i> 
     Nuevo Estado
 </a>
+<a href="#" class="btn btn-success" id="imprimirPDF">
+    <i class="fa fa-print"></i> 
+    Imprimir 
+</a>
     <table class="table">
         <tr>
             <th>Id</th>

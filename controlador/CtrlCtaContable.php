@@ -23,7 +23,8 @@ class CtrlCtaContable extends Controlador {
             'titulo'=>'Cuentas Contables',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
-            'msg'=>$msg
+            'msg'=>$msg,
+            'datos'=>$data['data']
         ];
 
         $this->mostrar('./plantilla/home.php',$datos);
@@ -40,13 +41,13 @@ class CtrlCtaContable extends Controlador {
     }
     public function nuevo(){
         Helper::verificarLogin();
-        $datos= [
+/*         $datos= [
             'titulo'=>'Nueva Cuenta Contable',
             'contenido'=>$this->mostrar('ctasContables/formulario.php',null,true),
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
-        $this->mostrar('./plantilla/home.php',$datos);
+        ]; */
+        $this->mostrar('ctasContables/formulario.php');
     }
     public function editar(){
         Helper::verificarLogin();
@@ -59,14 +60,14 @@ class CtrlCtaContable extends Controlador {
             'datos'=>$data['data'][0]
         ];
         
-        $home = $this->mostrar('ctasContables/formulario.php',$datos,true);
+/*         $home = $this->mostrar('ctasContables/formulario.php',$datos,true);
         $datos = [
             'titulo'=>'Editar Cta Contable',
             'contenido'=>$home,
             'menu'=>$_SESSION['menu'],
             'msg'=>$msg
-        ];
-        $this->mostrar('./plantilla/home.php',$datos);
+        ]; */
+        $this->mostrar('ctasContables/formulario.php',$datos);
     }
     public function guardar(){
         # echo "Guardando..";
