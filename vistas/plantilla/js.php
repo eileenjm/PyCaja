@@ -72,6 +72,7 @@
                 alert("error");
             });
         });
+        
         $('#cambiarClave').click( function(e){ 
           e.preventDefault();
            let linkNuevo=$(this).html();
@@ -118,6 +119,29 @@
             $('#modal-eliminar').modal('show');
             
         });
+
+        /*
+            LOGIN
+        */
+        $('.login').click( function(){ 
+            let linkNuevo=$(this).html();
+            // alert(linkNuevo)
+            $(this).html('<i class="fa fa-spinner"></i> Cargando...');
+            // $('.modal-title-login').html('Login');
+            $.ajax({
+                url:'index.php',
+                type:'get',
+                data:{'ctrl':'CtrlPersona','accion':'index'}
+            }).done(function(datos){
+                $('.nuevo').html(linkNuevo);
+                $('#body-form-login').html(datos);
+                $('#modal-login').modal('show');
+            }).fail(function(){
+                $('.nuevo').html(linkNuevo);
+                alert("error");
+            });  
+        });
+        
         $('.cambiarClave').click( function(){ 
             var id= $(this).data('id');
             var nombre= $(this).data('nombre');
@@ -134,7 +158,7 @@
         $('#imprimirPDF').click(function (e) { 
             e.preventDefault();
             let link=$(this).html();
-            //alert(link)
+            // alert(link)
             $(this).html('<i class="fa fa-spinner"></i> Descargando...');
             var datos= <?=json_encode(isset($datos)?$datos:'');?>;
             let titulo=$('#titulo').html().trim();
@@ -146,6 +170,7 @@
                 doc.setFontSize(20)
                 doc.setTextColor(255, 0, 0) // Rojo
                 doc.text(60, 25, titulo)
+                // alert(titulo)
                 let columnas =[]
                 columnas.push( Object.keys(datos[0]) )
 
@@ -164,6 +189,7 @@
             doc.save(titulo)
             
         });
+
         function imprimirEncabezado(doc){
             // alert('Imprimiendo Cabecera')
             doc.setFontSize(10)
@@ -175,8 +201,10 @@
             // alert('Imprimiendo Cabecera')
             doc.setFontSize(10)
             doc.setTextColor(0, 0, 255) // Azul
-            doc.text(160, 280, 'CopyRight 2023')
+            doc.text(100, 280, 'CopyRight 2023')
             doc.line(10,273,200,273)
         }
+
   });
+
 </script>

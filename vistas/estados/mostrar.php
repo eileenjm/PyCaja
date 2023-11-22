@@ -30,10 +30,11 @@ foreach ($datos as $d) {
             Editar
         </a>
 
-        <a href="?ctrl=CtrlEstado&accion=eliminar&id=<?=$d['id']?> data-id="<?=$d["id"]?>" data-nombre="<?=$d["nombre"]?>" href="#" class="btn btn-danger eliminar">
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["nombre"]?>" href="#" class="btn btn-danger eliminar">
           <i class="fa fa-trash"></i>  
           Eliminar
         </a>
+        
     </td>
 </tr>
 

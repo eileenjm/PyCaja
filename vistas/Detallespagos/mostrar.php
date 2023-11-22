@@ -1,11 +1,11 @@
-<a href="#" class="btn btn-primary nuevo">
+<!-- <a href="#" class="btn btn-primary nuevo">
     <i class="fa fa-plus"></i> 
     Nuevo Detalle Pago
-</a>
-<a href="#" class="btn btn-success" id="imprimirPDF">
+</a> -->
+<!-- <a href="#" class="btn btn-success" id="imprimirPDF">
     <i class="fa fa-print"></i> 
     Imprimir 
-</a>
+</a> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +28,7 @@
     <div class="content">
         <div class="row">
             <div class="col-8">
-                <h3>Detalles Pagos</h3>
+<!--                 <h3>Detalles Pagos</h3> -->
                 <table id="miTabla" class="table">
                     <thead>
                         <tr>
@@ -126,8 +126,8 @@
             </div>
             <div class="col-4">
                 <h3>
-                    Mi Presupuesto
-                    <button class="btn btn-primary" id="generarPpto">Generar Ppto</button>
+                    Monto a Pagar
+                    <button class="btn btn-primary" id="generarPpto">Generar Pago</button>
                 </h3>
                 <table id="miPresupuesto" class="table">
                     <thead>
@@ -148,7 +148,7 @@
                     <tfoot>
                         <tr id="totalPpto">
                             <td colspan="4" align="right">
-                                <b>    Total Ppto: </b>
+                                <b>    Total Pago: </b>
                                 </td>
                             <td align="right">
                                 <span id="total"></span>
@@ -259,7 +259,7 @@ function agregarFila(id,servicio,precio,cantidad){
 
 $('#generarPpto').click(function (e) { 
     e.preventDefault();
-    alert("generando ppto. por: "+ $('#total').html() )
+    alert("Pago realizado. por: "+ $('#total').html() )
 });
     </script>
 </body>

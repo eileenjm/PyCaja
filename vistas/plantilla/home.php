@@ -17,9 +17,10 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
         <!-- ChartJS -->
-        <script src="./assets/js/chart.js/Chart.min.js"></script>
+<script src="./assets/js/chart.js/Chart.min.js"></script>
 <script src="./assets/js/jsPDF/jspdf.debug.js"></script>
 <script src="./assets/js/jsPDF/jspdf.plugin.autotable3.1.1.min.js"></script>
+
         
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -67,6 +68,7 @@ Vista::mostrar('plantilla/aside.php');
      </div>
     </div>
 </div>
+
 <!-- Modal Eliminar -->
 <div class="modal fade" id="modal-eliminar" role="dialog">
     <div class="modal-dialog">
@@ -87,6 +89,23 @@ Vista::mostrar('plantilla/aside.php');
                 <a type="button" class="btn btn-danger" id="btn-confirmar" href="" data-id="">Eliminar</a>
             </div>
         </div>
+    </div>
+</div>
+<!-- Modal LOGIN -->
+<div class="modal fade" id="modal-login" role="dialog">
+    <div class="modal-dialog">
+ 
+     <!-- Modal content-->
+     <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title-login">Ingresa tus Credenciales</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body-login" id="body-form-login">
+    
+        </div>
+        
+     </div>
     </div>
 </div>
 

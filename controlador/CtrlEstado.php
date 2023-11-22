@@ -36,7 +36,7 @@ class CtrlEstado extends Controlador {
         Helper::verificarLogin();
         $id = $_GET['id'];
         # echo "eliminando: ".$id;
-        $obj =new Estado ($id);
+        $obj =new Estado($id);
         $obj->eliminar();
         $this->index();
     }

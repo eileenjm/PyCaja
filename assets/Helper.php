@@ -63,15 +63,15 @@ abstract class Helper
         return [
             'CtrlCargo'=>'Cargos',
             'CtrlEstado'=>'Estados',
+            'CtrlCargo'=>'Cargos',
+            'CtrlEstado'=>'Estados',
+            'CtrlPagos'=>'Pagos',
            #  'CtrlFactorForma'=>'Factores de Forma',
             'CtrlCtaContable'=>'Cuentas Contables',
             'CtrlConceptoPago'=>'Conceptos de Pago',
             'CtrlEstudiante'=>'Estudiante',
             'CtrlTipospagos'=>'Tipos de Pagos',
-            'CtrlPagos'=>'Pagos',
-            'CtrlDetallespago'=>'Detalles Pagos',
-            'CtrlProgramaEstudio'=>'Programa Estudio',
-            'CtrlCurso'=>'Curso',
+            'CtrlDetallespago'=>'Detalles Pagos', 
         ]; 
     }
     private static function getMenuTramiteAdministrativo(){
@@ -80,6 +80,8 @@ abstract class Helper
             'CtrlCtaContable'=>'Cuentas Contables',
             'CtrlConceptoPago'=>'Conceptos de Pago',
             'CtrlEstudiante'=>'Estudiante',
+            'CtrlTipospagos'=>'Tipos de Pagos',
+            'CtrlDetallespago'=>'Detalles Pagos',
         ]; 
     }
     private static function getMenuTramiteDocente(){
@@ -102,8 +104,6 @@ abstract class Helper
     }
     private static function getMenuCajaAdmin(){
         return [
-            'CtrlCargo'=>'Cargos',
-            'CtrlEstado'=>'Estados',
            #  'CtrlFactorForma'=>'Factores de Forma',
             'CtrlCtaContable'=>'Cuentas Contables',
             'CtrlConceptoPago'=>'Conceptos de Pago',
@@ -112,10 +112,17 @@ abstract class Helper
     }
     private static function getMenuCajaAdministrativo(){
         return [
+            'CtrlCargo'=>'Cargos',
+            'CtrlEstado'=>'Estados',
+            'CtrlCargo'=>'Cargos',
+            'CtrlEstado'=>'Estados',
+            'CtrlPagos'=>'Pagos',
            #  'CtrlFactorForma'=>'Factores de Forma',
             'CtrlCtaContable'=>'Cuentas Contables',
             'CtrlConceptoPago'=>'Conceptos de Pago',
             'CtrlEstudiante'=>'Estudiante',
+            'CtrlTipospagos'=>'Tipos de Pagos',
+            'CtrlDetallespago'=>'Detalles Pagos',
         ]; 
     }
     private static function getMenuCajaDocente(){
