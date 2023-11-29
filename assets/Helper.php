@@ -71,7 +71,6 @@ abstract class Helper
             'CtrlConceptoPago'=>'Conceptos de Pago',
             'CtrlEstudiante'=>'Estudiante',
             'CtrlTipospagos'=>'Tipos de Pagos',
-            'CtrlDetallespago'=>'Detalles Pagos', 
         ]; 
     }
     private static function getMenuTramiteAdministrativo(){
@@ -122,7 +121,6 @@ abstract class Helper
             'CtrlConceptoPago'=>'Conceptos de Pago',
             'CtrlEstudiante'=>'Estudiante',
             'CtrlTipospagos'=>'Tipos de Pagos',
-            'CtrlDetallespago'=>'Detalles Pagos',
         ]; 
     }
     private static function getMenuCajaDocente(){

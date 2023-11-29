@@ -3,6 +3,7 @@ session_start();
 require_once './core/Controlador.php';
 require_once './modelo/Estudiante.php';
 require_once './modelo/ProgramaEstudio.php';
+require_once './modelo/Detallespagos.php';
 require_once './assets/Helper.php';
 class CtrlEstudiante extends Controlador {
     public function index(){
@@ -113,5 +114,14 @@ class CtrlEstudiante extends Controlador {
         
         # var_dump($data);exit;
         $this->index();
+    }
+    public function pagar(){
+        $obj = new Detallespagos;
+        $detallesp = $obj->mostrar('Detallespagos/mostrar.php',$datos);
+        $msg='';
+        $datos = [
+            
+            'Detallespagos'=>$detallesp['data']
+        ];
     }
 }

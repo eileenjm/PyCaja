@@ -10,12 +10,17 @@
   <link rel="stylesheet" href="./assets/css/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="./assets/css/icheck.css">
  <!-- Theme style -->
- <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+
+<!--  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" href="./assets/css/jquery-toast.css">
   <link rel="stylesheet" href="./assets/css/adminlte.min.css">
 </head>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+crossorigin="anonymous"></script>
+
         <!-- ChartJS -->
 <script src="./assets/js/chart.js/Chart.min.js"></script>
 <script src="./assets/js/jsPDF/jspdf.debug.js"></script>
@@ -62,6 +67,23 @@ Vista::mostrar('plantilla/aside.php');
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body" id="body-form">
+    
+        </div>
+        
+     </div>
+    </div>
+</div>
+<!-- Modal Formulario - Pagos -->
+<div class="modal fade" id="modal-pagos" role="dialog">
+    <div class="modal-dialog modal-xl">
+ 
+     <!-- Modal content-->
+     <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" id="body-form-pagos">
     
         </div>
         

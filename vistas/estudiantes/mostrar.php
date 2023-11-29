@@ -7,8 +7,8 @@
     <i class="fa fa-print"></i> 
     Imprimir 
 </a>
-    <table class="table">
-        <tr>
+<table class="table">
+    <thead>
             <th>Id</th>
             <th>Nombres</th>
             <th>Apellidos</th>
@@ -19,7 +19,7 @@
             <th>Fecha Nac.</th>
             <th>Programa Estud.</th>
             <th>Opciones</th>
-        </tr>
+            </thead>
 <?php
 if (is_array($datos))
 foreach ($datos as $d) {
@@ -41,17 +41,21 @@ foreach ($datos as $d) {
             <i class="fa fa-edit"></i> 
             Editar
         </a>
-        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["nombres"]?>" href="#" class="btn btn-danger eliminar">
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["nombres"]. ' '. $d["apellidos"]?>" href="#" class="btn btn-danger eliminar">
           <i class="fa fa-trash"></i>  
           Eliminar
         </a>
+        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["nombres"]. ' '. $d["apellidos"]?>" href="#" class="btn btn-primary pagar">
+                <i class="fa fa-money"></i>  
+                Pagar
+            </a>
     </td>
 </tr>
 
 <?php
 }
 ?>
-
     </table>
 
     <a href="?">Retornar</a>
+

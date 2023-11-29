@@ -1,34 +1,9 @@
-<!-- <a href="#" class="btn btn-primary nuevo">
-    <i class="fa fa-plus"></i> 
-    Nuevo Detalle Pago
-</a> -->
-<!-- <a href="#" class="btn btn-success" id="imprimirPDF">
-    <i class="fa fa-print"></i> 
-    Imprimir 
-</a> -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta id="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <style>
-        tr.resaltar td {
-            background: yellow;
-        }
-        tr.agregado td {
-            background: greenyellow;
-        }
-      
-    </style>
-</head>
-<body>
+
+
     <div class="content">
         <div class="row">
-            <div class="col-8">
-<!--                 <h3>Detalles Pagos</h3> -->
+            <div class="col">
+                <h3>Estudiante: <?=$estudiante?></h3>
                 <table id="miTabla" class="table">
                     <thead>
                         <tr>
@@ -42,19 +17,17 @@
                             <th>seleccionar</th>
                                 <th>Id</th>
                                 <th>cantidad</th>
+                                <th>Descripcion</th>
                                 <th>monto</th>
-                                <th>subTotal</th>
-                                <th>idConcepto</th>
-                                <th>idPago</th>
-                                <th>descuento</th>
-                                <th>igv</th>
+                               
                             </tr>
                     </thead>
+                    <tbody>
                     <?php
                     if (is_array($datos))
-                    foreach ($datos as $d) {
+                    foreach ($datos as $d):
                     ?>
-                    <tbody>
+                    
                         <tr id="miFila">
                             <td>
                                 <div class="form-check form-switch">
@@ -68,76 +41,40 @@
                             <input type="number" value="1" class="form-control">
                             </td>
                             <td>
+                                <?=$d['nombre']?>
+                            </td>
+                            <td>
                                 <?=$d['monto']?>
                             </td>
-                            <td>
-                                <?=$d['subTotal']?>
-                            </td>
-                            <td>
-                                <?=$d['idConcepto']?>
-                            </td>
-                            <td>
-                                <?=$d['idPago']?>
-                            </td>
-                            <td>
-                                <?=$d['descuento']?>
-                            </td>
-                            <td>
-                                <?=$d['igv']?>
-                            </td>
+                            
 
                             <td><button type="button" id="addPpto" class="btn btn-outline-info" disabled>Agregar</button></td>
                         </tr>
-                        <tr id="miFila">
-                            <td>
-                                <div class="form-check form-switch">
-                                    <input type="checkbox" id="chk" class="form-check-input elemento" role="switch">
-                                </div>
-                            </td>
-                            <td>
-                                2
-                            </td>
-                            <td>
-                            <input type="number" value="1" class="form-control">
-                            </td>
-                            <td>
-                                15.00
-                            </td>
-                            <td>
-                                <?=$d['subTotal']?>
-                            </td>
-                            <td>
-                                <?=$d['idConcepto']?>
-                            </td>
-                            <td>
-                                <?=$d['idPago']?>
-                            </td>
-                            <td>
-                                <?=$d['descuento']?>
-                            </td>
-                            <td>
-                                <?=$d['igv']?>
-                            </td>
-                            </td>
-                            <td><button type="button" id="addPpto" class="btn btn-outline-info" disabled>Agregar</button></td>
-                        </tr>
+                        <?php
+                            endforeach;
+                        ?>
+                        
                     </tbody>
                 </table>
             </div>
-            <div class="col-4">
+        </div>
+        <div class="row">
+            <div class="col-6">
                 <h3>
                     Monto a Pagar
                     <button class="btn btn-primary" id="generarPpto">Generar Pago</button>
                 </h3>
+                
+
                 <table id="miPresupuesto" class="table">
                     <thead>
-                        <tr>
-                        <th></th>
-                                <th>Id</th>
-                                <th  align="right">monto</th>
-                                <th width="100" align="center">cantidad</th>
-                                <th align="right">Total</th>
-                            </tr>
+                    <tr>
+                            <th>Id</th>
+                            <th>Descripcion</th>
+                            <th align="right">Monto</th>
+                            <th width="100" align="center">cantidad</th>
+                            <th align="right">Total</th>
+                            <th></th>
                         </tr>
                         
 
@@ -153,26 +90,24 @@
                             <td align="right">
                                 <span id="total"></span>
                             </td>
-            
+                            
                         </tr>
                     </tfoot>
                 </table>
-
+                <button id="btnPagar" class="btn btn-success">Pagar</button>
+                <button id="btnCancelar" class="btn btn-danger">Cancelar</button>
+                <button id="btnImprimirPresupuesto" class="btn btn-secondary">Imprimir Boleta</button>
             </div>
         </div>
     </div>
     
-    
-    <script
-  src="https://code.jquery.com/jquery-3.7.1.js"
-  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-  crossorigin="anonymous"></script>
 
     <script>
         let suma = 0.00;
 $(document).ready(function (){	
     
     $("[id*='chk']").click(function(e) {
+       // event.preventDefault()
 		var trSel=$(this).closest("[id*='miFila']");
         let btn = trSel.find('button');		
 		var chk = $(this).is(":checked");
@@ -194,11 +129,11 @@ $(document).ready(function (){
         if (chk){
             /* alert('Esta habilitado') */
             let id=trSel.children().eq(1);
-            let servicio=trSel.children().eq(2);
-            let precio=trSel.children().eq(3);
+            let monto=trSel.children().eq(4);
+            let Descripcion=trSel.children().eq(3);
             var cantidad = trSel.find('input[type="number"]').val();
 
-            agregarFila(id.text(),servicio.text(),precio.text(),cantidad)
+            agregarFila(id.text(),Descripcion.text(),monto.text(),cantidad)
 
             trSel.addClass('agregado');
         }else{
@@ -216,13 +151,13 @@ $(document).ready(function (){
 
 });
 
-function agregarFila(id,servicio,precio,cantidad){
-    let p = parseFloat(precio).toFixed(2)
+function agregarFila(id,Descripcion,monto,cantidad){
+    let p = parseFloat(monto).toFixed(2)
     let total = p * cantidad
     total = total.toFixed(2);
     var nuevaFila = '<tr id="ppto">'+
         '<td>' + id + '</td>'+
-        '<td>' + servicio + '</td>'+
+        '<td>' + Descripcion + '</td>'+
         '<td align="right">' + p + '</td>'+
         '<td align="center">' + cantidad + '</td>'+
         '<td class="subtotal" align="right">' + total + '</td>'+
@@ -262,25 +197,89 @@ $('#generarPpto').click(function (e) {
     alert("Pago realizado. por: "+ $('#total').html() )
 });
     </script>
-</body>
-</html>
-<!--     <td>
-    <a data-id="<?=$d["id"]?>" href="#" class="btn btn-success editar">
-            <i class="fa fa-edit"></i> 
-            Editar
-        </a>
-        <a data-id="<?=$d["id"]?>" data-nombre="<?=$d["cant"]?>" href="#" class="btn btn-danger eliminar">
-          <i class="fa fa-trash"></i>  
-          Eliminar
-        </a>
-        
-    </td> -->
-</tr>
+    <script>
+        $(document).ready(function () {
+    // ...
 
-<?php
-}
-?>
+    $('#btnPagar').on('click', function () {
+        // Lógica para realizar el pago
+        alert('Pago realizado por: ' + $('#total').html());
+    });
 
-    </table>
+    $('#btnCancelar').on('click', function () {
+        // Lógica para cancelar el pago
+        // Puedes reiniciar la tabla de presupuesto o realizar otras acciones necesarias
+        $('#miPresupuesto tbody').empty();
+        $('#total').html('0.00');
+    });
+
+/*     $('#btnImprimirBoleta').on('click', function () {
+        // Lógica para imprimir la boleta
+        // Aquí puedes abrir una nueva ventana con la boleta o realizar otras acciones necesarias
+        imprimirBoleta();
+    });
+
+    function imprimirBoleta() {
+        $(document).ready(function () {
+    // ... Otro código ...
+ */
+    $('#btnImprimirPresupuesto').on('click', function () {
+        imprimirPresupuesto();
+    });
+
+    function imprimirPresupuesto() {
+        // Crear un nuevo documento con el contenido que se va a imprimir
+        var ventanaImpresion = window.open('', '_blank');
+        var contenidoImpresion = '<html><head><title>Boleta</title>';
+        contenidoImpresion += '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">';
+        contenidoImpresion += '</head><body>';
+        contenidoImpresion += '<h3>Boleta</h3>';
+        contenidoImpresion += '<table class="table">';
+        contenidoImpresion += $('#miPresupuesto thead').html(); // Incluir la cabecera de la tabla
+        contenidoImpresion += '<tbody>';
+        $('#miPresupuesto tbody tr').each(function () {
+            contenidoImpresion += $(this).html(); // Incluir cada fila de la tabla
+        });
+        contenidoImpresion += '</tbody>';
+        contenidoImpresion += '<tfoot>';
+        contenidoImpresion += $('#totalPpto').html(); // Incluir el pie de la tabla con el total
+        contenidoImpresion += '</tfoot>';
+        contenidoImpresion += '</table>';
+        contenidoImpresion += '</body></html>';
+
+        // Escribir el contenido en la nueva ventana
+        ventanaImpresion.document.write(contenidoImpresion);
+
+        // Imprimir el contenido
+        ventanaImpresion.document.close();
+        ventanaImpresion.print();
+    }
+
+    // ... Otro código ...
+});
+  /*   }
+
+    // ...
+}); */
+
+    </script>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <style>
+        tr.resaltar td {
+            background: yellow;
+        }
+        tr.agregado td {
+            background: greenyellow;
+        }
+    </style>
+    </body>
+    </html>
+
 
     <a href="?">Retornar</a>

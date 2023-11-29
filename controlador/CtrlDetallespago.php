@@ -4,6 +4,7 @@ require_once './core/Controlador.php';
 require_once './modelo/Detallespagos.php';
 require_once './modelo/ConceptoPago.php';
 require_once './modelo/Pagos.php';
+require_once './modelo/Estudiante.php';
 require_once './assets/Helper.php';
 
 class CtrlDetallespago extends Controlador {
@@ -29,6 +30,25 @@ class CtrlDetallespago extends Controlador {
             'datos'=>$data['data']
         ];
     $this->mostrar('./plantilla/home.php',$datos);
+
+    }
+    public function verDetallesxEstudiante(){
+        # echo "Hola Detallespago";
+        $nombreEstudiante = $_GET['nombreEstudiante'];
+        Helper::verificarLogin();
+        /* $obj = new Detallespagos; */
+        $obj = new ConceptoPago;
+        $data = $obj->getTodo();
+
+        # var_dump($data);exit;
+        $msg=$data['msg'];
+        $datos = [
+            'estudiante'=>$nombreEstudiante,
+            'datos'=>$data['data']
+        ];
+
+        echo $this->mostrar('Detallespagos/mostrar.php',$datos,true);
+
 
     }
     public function eliminar(){

@@ -53,6 +53,33 @@
 
             }
         });
+
+        $('.pagar').click( function(){ 
+            var estudianteId = $(this).data('id');
+            var estudianteNombre = $(this).data('nombre');
+            
+            //alert('Pagando')
+            // Aquí puedes cargar y mostrar el formulario de la tabla 'pagos'
+            $.ajax({
+                url:'index.php',
+                type:'get',
+                data: { 
+                        'estudiante_id': estudianteId,
+                        'nombreEstudiante': estudianteNombre,
+                        'ctrl':'CtrlDetallespago',
+                        'accion':'verDetallesxEstudiante'
+                     }
+            }).done(function(datos){
+                $('#body-form-pagos').html(datos);
+                $('#modal-pagos').modal('show');
+                //alert('pagando')
+            }).fail(function(){
+                
+                alert("error");
+            });
+                
+
+        });
         
         $('.nuevo').click( function(){ 
             let linkNuevo=$(this).html();
